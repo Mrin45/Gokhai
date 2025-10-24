@@ -1,241 +1,481 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>I'm Sorry & I Love You ❤️</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>I'm Sorry & I Love You ❤️</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
-  <style>
-    :root {
-      --accent:#ff6b81;
-      --accent-2:#ffbfa7;
-      --bg1: linear-gradient(135deg,#ffd6e0 0%, #ffe8d6 100%);
-      --glass: rgba(255,255,255,0.12);
-      --white-80: rgba(255,255,255,0.9);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:'Poppins', system-ui, sans-serif;overflow-x:hidden;background:var(--bg1);color:#222;}
+    <style>
+        :root {
+            --accent: #ff6b81;
+            --accent-2: #ffbfa7;
+            --bg1: linear-gradient(135deg, #ffd6e0 0%, #ffe8d6 100%);
+            --glass: rgba(255, 255, 255, 0.12);
+            --white-80: rgba(255, 255, 255, 0.9);
+        }
 
-    #particles-js{position:fixed;inset:0;z-index:0;pointer-events:none}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
 
-    .wrap{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;}
+        html,
+        body {
+            height: 100%;
+            font-family: 'Poppins', system-ui, sans-serif;
+            overflow-x: hidden;
+            background: var(--bg1);
+            color: #222;
+        }
 
-    .card{
-      width:100%;max-width:1000px;
-      background:rgba(255,255,255,0.8);
-      backdrop-filter:blur(6px);
-      border-radius:18px;
-      box-shadow:0 10px 40px rgba(0,0,0,0.08);
-      padding:28px;
-      display:grid;
-      grid-template-columns:1fr 420px;
-      gap:20px;
-      align-items:start;
-    }
+        #particles-js {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none
+        }
 
-    /* RESPONSIVE BREAKPOINTS */
-    @media (max-width:900px){
-      .card{grid-template-columns:1fr;}
-    }
+        .wrap {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
 
-    @media (max-width:320px){
-      .wrap{padding:20px 10px;}
-      .card{padding:18px;gap:14px;}
-      h1{font-size:34px !important;}
-      .subtitle{font-size:15px !important;}
-      .message{font-size:14px !important;}
-      .swiper{height:360px !important;}
-      .photo-circle{width:80px;height:80px;border-width:4px;}
-      .btn{padding:8px 12px;font-size:14px;}
-      footer{font-size:12px;}
-    }
+        .card {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(6px);
+            border-radius: 18px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 28px;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 20px;
+            align-items: start;
+        }
 
-    h1{font-family:'Dancing Script','Great Vibes',serif;font-size:48px;color:var(--accent);}
-    .subtitle{font-size:18px;color:#333;margin-top:2px;}
-    .photo-circle{width:120px;height:120px;border-radius:50%;overflow:hidden;border:6px solid #fff;box-shadow:0 6px 30px rgba(0,0,0,0.12);}
-    .photo-circle img{width:100%;height:100%;object-fit:cover;}
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width:900px) {
+            .card {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    .message{font-size:16px;line-height:1.6;color:#333;margin-top:12px;}
+        @media (max-width:600px) {
+            .wrap {
+                padding: 20px 10px;
+            }
 
-    .controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;align-items:center}
-    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:999px;border:none;cursor:pointer;font-weight:600;transition:all 0.2s;}
-    .btn:hover{background:#ff506a;}
-    .btn.secondary{background:transparent;border:2px solid var(--accent);color:var(--accent);}
-    .btn.secondary:hover{background:var(--accent);color:#fff;}
+            .card {
+                padding: 18px;
+                gap: 14px;
+            }
 
-    .music-controls{display:flex;gap:8px;align-items:center;margin-left:auto;}
-    .music-controls input[type='range']{width:90px;}
+            h1 {
+                font-size: 34px !important;
+            }
 
-    .swiper{width:100%;height:620px;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);}
-    .swiper-slide img{width:100%;height:100%;object-fit:cover;}
+            .subtitle {
+                font-size: 15px !important;
+            }
 
-    .reveal{margin-top:14px;background:rgba(255,255,255,0.9);padding:16px;border-radius:10px;border:1px solid rgba(0,0,0,0.04)}
-    .big-love{font-family:'Great Vibes','Dancing Script',serif;font-size:36px;color:var(--accent);margin:4px 0}
-    .timer{font-weight:700;font-size:17px;margin-top:6px;color:#333}
-    footer{margin-top:18px;font-size:13px;color:#555;text-align:center}
+            .message {
+                font-size: 14px !important;
+            }
 
-    .hearts-layer{position:absolute;inset:auto 20px 20px auto;z-index:3;pointer-events:none}
-  </style>
+            .swiper {
+                height: 360px !important;
+            }
+
+            .photo-circle {
+                width: 80px;
+                height: 80px;
+                border-width: 4px;
+            }
+
+            .btn {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', 'Great Vibes', serif;
+            font-size: 48px;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #333;
+            margin-top: 2px;
+        }
+
+        .photo-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid #fff;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .photo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .message {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-top: 12px;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+            align-items: center
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #ff506a;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn.secondary:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .music-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .music-controls input[type='range'] {
+            width: 90px;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 620px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reveal {
+            margin-top: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.04)
+        }
+
+        .big-love {
+            font-family: 'Great Vibes', 'Dancing Script', serif;
+            font-size: 36px;
+            color: var(--accent);
+            margin: 4px 0
+        }
+
+        .timer {
+            font-weight: 700;
+            font-size: 17px;
+            margin-top: 6px;
+            color: #333
+        }
+
+        footer {
+            margin-top: 18px;
+            font-size: 13px;
+            color: #555;
+            text-align: center
+        }
+
+        .hearts-layer {
+            position: absolute;
+            inset: auto 20px 20px auto;
+            z-index: 3;
+            pointer-events: none
+        }
+
+        /* --- Responsive layout for very small screens (phones) --- */
+        @media screen and (max-width: 479px) {
+            .card {
+                grid-template-columns: 1fr;
+                padding: 18px 14px;
+                gap: 12px;
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            }
+
+            h1 {
+                font-size: 32px;
+                line-height: 1.1;
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .photo-circle {
+                width: 80px;
+                height: 80px;
+                border-width: 4px;
+            }
+
+            .message {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .btn {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .controls {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .music-controls {
+                flex: 1 1 100%;
+                justify-content: flex-start;
+                margin-top: 6px;
+            }
+
+            .swiper {
+                height: 360px;
+            }
+
+            .big-love {
+                font-size: 28px;
+            }
+
+            .timer {
+                font-size: 16px;
+            }
+
+            footer {
+                font-size: 12px;
+                text-align: center;
+                margin-top: 12px;
+            }
+
+            .wrap {
+                padding: 20px 10px;
+            }
+
+            .reveal {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div id="particles-js"></div>
+    <div id="particles-js"></div>
 
-  <div class="wrap">
-    <div class="card">
-      <div class="left-col">
-        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
-          <div class="photo-circle"><img src="images/m5.jpg" alt="Us"></div>
-          <div>
-            <h1 id="title">I'm Sorry & I Love You</h1>
-            <p class="subtitle">A little page from me to you — full of memories, hearts & a promise.</p>
-            <div class="timer" id="sinceTimer">Since we met: —</div>
-          </div>
+    <div class="wrap">
+        <div class="card">
+            <div class="left-col">
+                <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+                    <div class="photo-circle"><img src="images/m5.jpg" alt="Us"></div>
+                    <div>
+                        <h1 id="title">I'm Sorry & I Love You</h1>
+                        <p class="subtitle">A little page from me to you — full of memories, hearts & a promise.</p>
+                        <div class="timer" id="sinceTimer">Since we met: —</div>
+                    </div>
+                </div>
+
+                <p class="message" id="messageText">
+                    Dear love, I know I hurt you and I’m truly sorry. You mean the world to me. This page is made to
+                    remind you how much I cherish every moment with you and to promise I’ll be better. ❤️
+                </p>
+
+                <div class="controls">
+                    <button id="revealBtn" class="btn">Open my heart 💌</button>
+                    <button id="giftBtn" class="btn secondary">Send a message</button>
+
+                    <div class="music-controls">
+                        <button id="playPause" class="btn" aria-pressed="false">Play ♫</button>
+                        <input id="vol" type="range" min="0" max="1" step="0.01" value="0.5">
+                    </div>
+                </div>
+
+                <div class="reveal hidden" id="revealArea">
+                    <div class="big-love">I Love You Forever 💖</div>
+                    <p>You’re my home, my smile, my calm. I'm sorry for the pain — I promise to make it right.</p>
+                </div>
+
+                <footer>
+                    Gokhai, Maina, Moromi, Jaan, Piyaa Maina, Jaanmoni, Dhunu, Crazy Marvel Girl. I Love You..❤️‍🩹❤️‍🔥
+                </footer>
+            </div>
+
+            <div class="right-col">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="images/m.jpg" alt="Memory 1"></div>
+                        <div class="swiper-slide"><img src="images/m1.jpg" alt="Memory 2"></div>
+                        <div class="swiper-slide"><img src="images/m2.jpg" alt="Memory 3"></div>
+                        <div class="swiper-slide"><img src="images/m3.jpg" alt="Memory 4"></div>
+                        <div class="swiper-slide"><img src="images/m4.jpg" alt="Memory 5"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+                <div style="margin-top:12px;text-align:center">
+                    <audio id="bgAudio" loop>
+                        <source src="music/Jiyaa.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+
+            <div class="hearts-layer"></div>
         </div>
-
-        <p class="message" id="messageText">
-          Dear love, I know I hurt you and I’m truly sorry. You mean the world to me. This page is made to remind you how much I cherish every moment with you and to promise I’ll be better. ❤️
-        </p>
-
-        <div class="controls">
-          <button id="revealBtn" class="btn">Open my heart 💌</button>
-          <button id="giftBtn" class="btn secondary">Send a message</button>
-
-          <div class="music-controls">
-            <button id="playPause" class="btn" aria-pressed="false">Play ♫</button>
-            <input id="vol" type="range" min="0" max="1" step="0.01" value="0.5">
-          </div>
-        </div>
-
-        <div class="reveal hidden" id="revealArea">
-          <div class="big-love">I Love You Forever 💖</div>
-          <p>You’re my home, my smile, my calm. I'm sorry for the pain — I promise to make it right.</p>
-        </div>
-
-        <footer>
-          Gokhai, Maina, Moromi, Jaan, Piyaa Maina, Jaanmoni, Dhunu, Crazy Marvel Girl. I Love You..❤️‍🩹❤️‍🔥
-        </footer>
-      </div>
-
-      <div class="right-col">
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="images/m.jpg" alt="Memory 1"></div>
-            <div class="swiper-slide"><img src="images/m1.jpg" alt="Memory 2"></div>
-            <div class="swiper-slide"><img src="images/m2.jpg" alt="Memory 3"></div>
-            <div class="swiper-slide"><img src="images/m3.jpg" alt="Memory 4"></div>
-            <div class="swiper-slide"><img src="images/m4.jpg" alt="Memory 5"></div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-
-        <div style="margin-top:12px;text-align:center">
-          <audio id="bgAudio" loop>
-            <source src="music/Jiyaa.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-      </div>
-
-      <div class="hearts-layer"></div>
     </div>
-  </div>
 
-  <!-- CDNs -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <!-- CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
 
-  <script>
-    /* ---------- CONFIG ---------- */
-    const meetDate = '2025-02-25T09:39:00';  // your special date ❤️
+    <script>
+        /* ---------- CONFIG ---------- */
+        const meetDate = '2025-02-25T09:39:00';  // your special date ❤️
 
-    /* ---------- TIMER ---------- */
-    function updateTimer(){
-      const start = new Date(meetDate);
-      const now = new Date();
-      let diff = Math.floor((now - start) / 1000);
-      const years = Math.floor(diff / (3600*24*365)); diff -= years*3600*24*365;
-      const days = Math.floor(diff / (3600*24)); diff -= days*3600*24;
-      const hours = Math.floor(diff / 3600); diff -= hours*3600;
-      const minutes = Math.floor(diff / 60);
-      const seconds = diff - minutes*60;
+        /* ---------- TIMER ---------- */
+        function updateTimer() {
+            const start = new Date(meetDate);
+            const now = new Date();
+            let diff = Math.floor((now - start) / 1000);
+            const years = Math.floor(diff / (3600 * 24 * 365)); diff -= years * 3600 * 24 * 365;
+            const days = Math.floor(diff / (3600 * 24)); diff -= days * 3600 * 24;
+            const hours = Math.floor(diff / 3600); diff -= hours * 3600;
+            const minutes = Math.floor(diff / 60);
+            const seconds = diff - minutes * 60;
 
-      const parts = [];
-      if(years) parts.push(`${years} yr${years>1?'s':''}`);
-      if(days) parts.push(`${days} d`);
-      parts.push(`${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`);
+            const parts = [];
+            if (years) parts.push(`${years} yr${years > 1 ? 's' : ''}`);
+            if (days) parts.push(`${days} d`);
+            parts.push(`${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`);
 
-      document.getElementById('sinceTimer').textContent = 'Since we met: ' + parts.join(' • ');
-    }
-    updateTimer(); setInterval(updateTimer,1000);
+            document.getElementById('sinceTimer').textContent = 'Since we met: ' + parts.join(' • ');
+        }
+        updateTimer(); setInterval(updateTimer, 1000);
 
-    /* ---------- SWIPER ---------- */
-    new Swiper('.mySwiper', {
-      loop:true,
-      pagination:{el:'.swiper-pagination',clickable:true},
-      navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
-      autoplay:{delay:4000,disableOnInteraction:false},
-      speed:800,
-    });
+        /* ---------- SWIPER ---------- */
+        new Swiper('.mySwiper', {
+            loop: true,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            autoplay: { delay: 4000, disableOnInteraction: false },
+            speed: 800,
+        });
 
-    /* ---------- PARTICLES ---------- */
-    particlesJS('particles-js', {
-      "particles": {
-        "number": {"value": 12,"density": {"enable": true,"value_area": 800}},
-        "color": {"value": ["#ff6b81","#ff9aa2","#ffd1dc"]},
-        "shape": {"type": "image","image": [{"src":"https://twemoji.maxcdn.com/v/latest/72x72/1f496.png","width":20,"height":20}]},
-        "opacity": {"value":0.9,"random":true},
-        "size": {"value":16,"random":true},
-        "line_linked": {"enable": false},
-        "move": {"enable": true,"speed":2,"direction":"top","random":true,"out_mode":"out"}
-      }
-    });
+        /* ---------- PARTICLES ---------- */
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 12, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#ff6b81", "#ff9aa2", "#ffd1dc"] },
+                "shape": { "type": "image", "image": [{ "src": "https://twemoji.maxcdn.com/v/latest/72x72/1f496.png", "width": 20, "height": 20 }] },
+                "opacity": { "value": 0.9, "random": true },
+                "size": { "value": 16, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 2, "direction": "top", "random": true, "out_mode": "out" }
+            }
+        });
 
-    /* ---------- GSAP ANIMATIONS ---------- */
-    gsap.from('#title', {y:-10, opacity:0, duration:0.9});
-    gsap.from('.photo-circle', {scale:0.85, opacity:0, duration:0.9, delay:0.2});
-    gsap.from('.mySwiper', {y:20, opacity:0, duration:0.9, delay:0.35});
+        /* ---------- GSAP ANIMATIONS ---------- */
+        gsap.from('#title', { y: -10, opacity: 0, duration: 0.9 });
+        gsap.from('.photo-circle', { scale: 0.85, opacity: 0, duration: 0.9, delay: 0.2 });
+        gsap.from('.mySwiper', { y: 20, opacity: 0, duration: 0.9, delay: 0.35 });
 
-    const revealBtn = document.getElementById('revealBtn');
-    const revealArea = document.getElementById('revealArea');
-    revealBtn.addEventListener('click', ()=>{
-      revealArea.classList.remove('hidden');
-      gsap.fromTo(revealArea,{y:10,opacity:0},{y:0,opacity:1,duration:0.8,ease:'back.out(1.2)'});
-      const layer=document.querySelector('.hearts-layer');
-      for(let i=0;i<10;i++){
-        const s=document.createElement('span');
-        s.textContent=['💖','💕','💘','💝'][Math.floor(Math.random()*4)];
-        s.style.position='absolute';s.style.fontSize=(14+Math.random()*26)+'px';
-        s.style.left=Math.floor(Math.random()*160)+'px';s.style.bottom='20px';
-        layer.appendChild(s);
-        gsap.to(s,{y:-260-Math.random()*120,x:-40+Math.random()*80,rotation:-40+Math.random()*80,opacity:0,duration:1.8+Math.random(),ease:'power2.out',onComplete:()=>s.remove()});
-      }
-    });
+        const revealBtn = document.getElementById('revealBtn');
+        const revealArea = document.getElementById('revealArea');
+        revealBtn.addEventListener('click', () => {
+            revealArea.classList.remove('hidden');
+            gsap.fromTo(revealArea, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.2)' });
+            const layer = document.querySelector('.hearts-layer');
+            for (let i = 0; i < 10; i++) {
+                const s = document.createElement('span');
+                s.textContent = ['💖', '💕', '💘', '💝'][Math.floor(Math.random() * 4)];
+                s.style.position = 'absolute'; s.style.fontSize = (14 + Math.random() * 26) + 'px';
+                s.style.left = Math.floor(Math.random() * 160) + 'px'; s.style.bottom = '20px';
+                layer.appendChild(s);
+                gsap.to(s, { y: -260 - Math.random() * 120, x: -40 + Math.random() * 80, rotation: -40 + Math.random() * 80, opacity: 0, duration: 1.8 + Math.random(), ease: 'power2.out', onComplete: () => s.remove() });
+            }
+        });
 
-    /* ---------- GIFT BUTTON ---------- */
-    document.getElementById('giftBtn').addEventListener('click', ()=>{
-      const msg=encodeURIComponent('Hey ❤️, I made something for you — open this page. I love you.');
-      window.open(`https://wa.me/?text=${msg}`,'_blank');
-    });
+        /* ---------- GIFT BUTTON ---------- */
+        document.getElementById('giftBtn').addEventListener('click', () => {
+            const msg = encodeURIComponent('Hey ❤️, I made something for you — open this page. I love you.');
+            window.open(`https://wa.me/?text=${msg}`, '_blank');
+        });
 
-    /* ---------- MUSIC CONTROLS ---------- */
-    const audio=document.getElementById('bgAudio');
-    const playPause=document.getElementById('playPause');
-    const vol=document.getElementById('vol');
-    audio.volume=parseFloat(vol.value);
-    playPause.addEventListener('click',()=>{
-      if(audio.paused){audio.play();playPause.textContent='Pause ⏸';}
-      else{audio.pause();playPause.textContent='Play ♫';}
-    });
-    vol.addEventListener('input',()=>audio.volume=parseFloat(vol.value));
-  </script>
+        /* ---------- MUSIC CONTROLS ---------- */
+        const audio = document.getElementById('bgAudio');
+        const playPause = document.getElementById('playPause');
+        const vol = document.getElementById('vol');
+        audio.volume = parseFloat(vol.value);
+        playPause.addEventListener('click', () => {
+            if (audio.paused) { audio.play(); playPause.textContent = 'Pause ⏸'; }
+            else { audio.pause(); playPause.textContent = 'Play ♫'; }
+        });
+        vol.addEventListener('input', () => audio.volume = parseFloat(vol.value));
+    </script>
 </body>
+
 </html>

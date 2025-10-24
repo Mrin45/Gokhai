@@ -26,7 +26,7 @@
         * {
             box-sizing: border-box;
             margin: 0;
-            padding: 0
+            padding: 0;
         }
 
         html,
@@ -42,7 +42,7 @@
             position: fixed;
             inset: 0;
             z-index: 0;
-            pointer-events: none
+            pointer-events: none;
         }
 
         .wrap {
@@ -53,6 +53,7 @@
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
+            padding-bottom: env(safe-area-inset-bottom, 40px);
         }
 
         .card {
@@ -67,55 +68,6 @@
             grid-template-columns: 1fr 420px;
             gap: 20px;
             align-items: start;
-        }
-
-        /* RESPONSIVE BREAKPOINTS */
-        @media (max-width:900px) {
-            .card {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width:600px) {
-            .wrap {
-                padding: 20px 10px;
-            }
-
-            .card {
-                padding: 18px;
-                gap: 14px;
-            }
-
-            h1 {
-                font-size: 34px !important;
-            }
-
-            .subtitle {
-                font-size: 15px !important;
-            }
-
-            .message {
-                font-size: 14px !important;
-            }
-
-            .swiper {
-                height: 360px !important;
-            }
-
-            .photo-circle {
-                width: 80px;
-                height: 80px;
-                border-width: 4px;
-            }
-
-            .btn {
-                padding: 8px 12px;
-                font-size: 14px;
-            }
-
-            footer {
-                font-size: 12px;
-            }
         }
 
         h1 {
@@ -157,7 +109,7 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 18px;
-            align-items: center
+            align-items: center;
         }
 
         .btn {
@@ -169,6 +121,8 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.2s;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .btn:hover {
@@ -199,7 +153,8 @@
 
         .swiper {
             width: 100%;
-            height: 620px;
+            height: 60vh;
+            max-height: 620px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
@@ -209,6 +164,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
         }
 
         .reveal {
@@ -216,42 +179,93 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 16px;
             border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, 0.04)
+            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .big-love {
             font-family: 'Great Vibes', 'Dancing Script', serif;
             font-size: 36px;
             color: var(--accent);
-            margin: 4px 0
+            margin: 4px 0;
         }
 
         .timer {
             font-weight: 700;
             font-size: 17px;
             margin-top: 6px;
-            color: #333
+            color: #333;
         }
 
         footer {
             margin-top: 18px;
             font-size: 13px;
             color: #555;
-            text-align: center
+            text-align: center;
         }
 
         .hearts-layer {
             position: absolute;
             inset: auto 20px 20px auto;
             z-index: 3;
-            pointer-events: none
+            pointer-events: none;
         }
 
-        /* --- Responsive layout for very small screens (phones) --- */
-        @media screen and (max-width: 479px) {
+        /* Medium screens (tablets) */
+        @media (max-width: 900px) {
             .card {
                 grid-template-columns: 1fr;
-                padding: 18px 14px;
+            }
+        }
+
+        /* Small screens (phones) */
+        @media (max-width: 600px) {
+            .wrap {
+                padding: 20px 10px;
+                padding-bottom: env(safe-area-inset-bottom, 20px);
+            }
+
+            .card {
+                padding: 18px;
+                gap: 14px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            .subtitle {
+                font-size: 15px;
+            }
+
+            .message {
+                font-size: 14px;
+            }
+
+            .swiper {
+                height: 50vh;
+                max-height: 360px;
+            }
+
+            .photo-circle {
+                width: 80px;
+                height: 80px;
+                border-width: 4px;
+            }
+
+            .btn {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+
+        /* Very small screens (phones) */
+        @media (max-width: 479px) {
+            .wrap .card {
+                padding: 16px 12px;
                 gap: 12px;
                 box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
             }
@@ -262,17 +276,11 @@
             }
 
             .subtitle {
-                font-size: 15px;
-            }
-
-            .photo-circle {
-                width: 80px;
-                height: 80px;
-                border-width: 4px;
+                font-size: 14px;
             }
 
             .message {
-                font-size: 15px;
+                font-size: 14px;
                 line-height: 1.5;
             }
 
@@ -293,7 +301,8 @@
             }
 
             .swiper {
-                height: 360px;
+                height: 45vh;
+                max-height: 300px;
             }
 
             .big-love {
@@ -301,22 +310,19 @@
             }
 
             .timer {
-                font-size: 16px;
-            }
-
-            footer {
-                font-size: 12px;
-                text-align: center;
-                margin-top: 12px;
-            }
-
-            .wrap {
-                padding: 20px 10px;
+                font-size: 15px;
             }
 
             .reveal {
                 padding: 12px;
-                font-size: 15px;
+                font-size: 14px;
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                width: 30px;
+                height: 30px;
+                margin-top: -15px;
             }
         }
     </style>
@@ -394,7 +400,7 @@
 
     <script>
         /* ---------- CONFIG ---------- */
-        const meetDate = '2025-02-25T09:39:00';  // your special date ❤️
+        const meetDate = '2025-02-25T09:39:00'; // your special date ❤️
 
         /* ---------- TIMER ---------- */
         function updateTimer() {
@@ -420,21 +426,35 @@
         new Swiper('.mySwiper', {
             loop: true,
             pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            navigation: { nextEl: '.swiper-button-prev', prevEl: '.swiper-button-next' },
             autoplay: { delay: 4000, disableOnInteraction: false },
             speed: 800,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            breakpoints: {
+                479: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                }
+            }
         });
 
         /* ---------- PARTICLES ---------- */
         particlesJS('particles-js', {
-            "particles": {
-                "number": { "value": 12, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": ["#ff6b81", "#ff9aa2", "#ffd1dc"] },
-                "shape": { "type": "image", "image": [{ "src": "https://twemoji.maxcdn.com/v/latest/72x72/1f496.png", "width": 20, "height": 20 }] },
-                "opacity": { "value": 0.9, "random": true },
-                "size": { "value": 16, "random": true },
-                "line_linked": { "enable": false },
-                "move": { "enable": true, "speed": 2, "direction": "top", "random": true, "out_mode": "out" }
+            particles: {
+                number: { 
+                    value: window.innerWidth <= 479 ? 6 : 12, // Fewer particles on mobile
+                    density: { enable: true, value_area: 800 } 
+                },
+                color: { value: ['#ff6b81', '#ff9aa2', '#ffd1dc'] },
+                shape: { 
+                    type: 'image', 
+                    image: [{ src: 'https://twemoji.maxcdn.com/v/latest/72x72/1f496.png', width: 20, height: 20 }] 
+                },
+                opacity: { value: 0.9, random: true },
+                size: { value: 16, random: true },
+                line_linked: { enable: false },
+                move: { enable: true, speed: 2, direction: 'top', random: true, out_mode: 'out' }
             }
         });
 

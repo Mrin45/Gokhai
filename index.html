@@ -52,8 +52,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
-            padding-bottom: env(safe-area-inset-bottom, 40px);
+            padding: 20px 10px;
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+            overflow: hidden;
         }
 
         .card {
@@ -63,11 +64,16 @@
             backdrop-filter: blur(6px);
             border-radius: 18px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            padding: 28px;
+            padding: 20px;
             display: grid;
-            grid-template-columns: 1fr 420px;
+            grid-template-columns: 1fr;
             gap: 20px;
             align-items: start;
+            overflow: hidden;
+        }
+
+        .left-col, .right-col {
+            width: 100%;
         }
 
         h1 {
@@ -153,11 +159,17 @@
 
         .swiper {
             width: 100%;
-            height: 60vh;
-            max-height: 620px;
+            height: 40vh; /* Reduced for better fit */
+            max-height: 400px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .swiper-slide img {
@@ -165,6 +177,19 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        .swiper-slide:empty::after {
+            content: "Image not loaded - Check path: images/m.jpg";
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .swiper-button-prev,
@@ -211,30 +236,35 @@
         }
 
         /* Medium screens (tablets) */
-        @media (max-width: 900px) {
-            .card {
-                grid-template-columns: 1fr;
+        @media (min-width: 901px) {
+            .wrap .card {
+                grid-template-columns: 1fr 420px;
+            }
+
+            .swiper {
+                height: 60vh;
+                max-height: 620px;
             }
         }
 
         /* Small screens (phones) */
         @media (max-width: 600px) {
             .wrap {
-                padding: 20px 10px;
-                padding-bottom: env(safe-area-inset-bottom, 20px);
+                padding: 15px 10px;
+                padding-bottom: env(safe-area-inset-bottom, 15px);
             }
 
-            .card {
-                padding: 18px;
-                gap: 14px;
+            .wrap .card {
+                padding: 15px;
+                gap: 12px;
             }
 
             h1 {
-                font-size: 34px;
+                font-size: 32px;
             }
 
             .subtitle {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .message {
@@ -242,56 +272,56 @@
             }
 
             .swiper {
-                height: 50vh;
-                max-height: 360px;
+                height: 35vh;
+                max-height: 300px;
             }
 
             .photo-circle {
-                width: 80px;
-                height: 80px;
-                border-width: 4px;
+                width: 70px;
+                height: 70px;
+                border-width: 3px;
             }
 
             .btn {
                 padding: 8px 12px;
-                font-size: 14px;
+                font-size: 13px;
             }
 
             footer {
-                font-size: 12px;
+                font-size: 11px;
             }
         }
 
         /* Very small screens (phones) */
         @media (max-width: 479px) {
             .wrap .card {
-                padding: 16px 12px;
-                gap: 12px;
-                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+                padding: 12px 8px;
+                gap: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
             }
 
             h1 {
-                font-size: 32px;
+                font-size: 28px;
                 line-height: 1.1;
             }
 
             .subtitle {
-                font-size: 14px;
+                font-size: 12px;
             }
 
             .message {
-                font-size: 14px;
-                line-height: 1.5;
+                font-size: 12px;
+                line-height: 1.4;
             }
 
             .btn {
-                padding: 8px 12px;
-                font-size: 14px;
+                padding: 6px 10px;
+                font-size: 12px;
             }
 
             .controls {
                 flex-wrap: wrap;
-                gap: 8px;
+                gap: 6px;
             }
 
             .music-controls {
@@ -301,28 +331,28 @@
             }
 
             .swiper {
-                height: 45vh;
-                max-height: 300px;
+                height: 30vh;
+                max-height: 250px;
             }
 
             .big-love {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             .timer {
-                font-size: 15px;
+                font-size: 13px;
             }
 
             .reveal {
-                padding: 12px;
-                font-size: 14px;
+                padding: 10px;
+                font-size: 12px;
             }
 
             .swiper-button-prev,
             .swiper-button-next {
-                width: 30px;
-                height: 30px;
-                margin-top: -15px;
+                width: 25px;
+                height: 25px;
+                margin-top: -12px;
             }
         }
     </style>
@@ -499,3 +529,4 @@
 </body>
 
 </html>
+

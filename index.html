@@ -649,9 +649,11 @@
 
         /* ---------- GIFT BUTTON ---------- */
         document.getElementById('giftBtn').addEventListener('click', () => {
+            const phoneNumber = "918638447042";
             const msg = encodeURIComponent('Hey ❤️, I made something for you — open this page. I love you.');
-            window.open(`https://wa.me/?text=${msg}`, '_blank');
+            window.open(`https://wa.me/${phoneNumber}?text=${msg}`, '_blank');
         });
+        
 
         /* ---------- MUSIC CONTROLS ---------- */
         const audio = document.getElementById('bgAudio');
@@ -671,4 +673,5 @@
     </script>
 </body>
 </html>
+
 

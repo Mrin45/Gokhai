@@ -655,36 +655,10 @@
         
 
         /* ---------- MUSIC CONTROLS ---------- */
-        /* ---------- MUSIC CONTROLS ---------- */
         const audio = document.getElementById('bgAudio');
         const playPause = document.getElementById('playPause');
         const vol = document.getElementById('vol');
-        
-        // Set initial volume
         audio.volume = parseFloat(vol.value);
-        
-        // Auto-play when page loads (muted first to comply with browser policies)
-        window.addEventListener('load', function() {
-            // Start muted to comply with autoplay policies
-            audio.muted = true;
-            
-            const playPromise = audio.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // Successfully started playing, now unmute
-                    audio.muted = false;
-                    playPause.textContent = 'Pause ⏸';
-                }).catch(error => {
-                    // If autoplay fails, just show play button
-                    console.log('Autoplay prevented, user interaction required');
-                    playPause.textContent = 'Play ♫';
-                    audio.muted = false; // Ensure audio is not muted for manual play
-                });
-            }
-        });
-        
-        // Manual play/pause control
         playPause.addEventListener('click', () => {
             if (audio.paused) { 
                 audio.play(); 
@@ -694,12 +668,11 @@
                 playPause.textContent = 'Play ♫'; 
             }
         });
-        
-        // Volume control
         vol.addEventListener('input', () => audio.volume = parseFloat(vol.value));
     </script>
 </body>
 </html>
+
 
 
 

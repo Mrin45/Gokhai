@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>I'm Sorry & I Love You ❤️</title>
 
     <!-- Google Fonts -->
@@ -159,7 +159,7 @@
 
         .swiper {
             width: 100%;
-            height: 40vh; /* Reduced for better fit */
+            height: 40vh;
             max-height: 400px;
             border-radius: 12px;
             overflow: hidden;
@@ -235,8 +235,12 @@
             pointer-events: none;
         }
 
+        .hidden {
+            display: none;
+        }
+
         /* Medium screens (tablets) */
-        @media (min-width: 901px) {
+        @media (min-width: 768px) {
             .wrap .card {
                 grid-template-columns: 1fr 420px;
             }
@@ -248,7 +252,7 @@
         }
 
         /* Small screens (phones) */
-        @media (max-width: 600px) {
+        @media (max-width: 767px) {
             .wrap {
                 padding: 15px 10px;
                 padding-bottom: env(safe-area-inset-bottom, 15px);
@@ -289,6 +293,17 @@
 
             footer {
                 font-size: 11px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .music-controls {
+                margin-left: 0;
+                justify-content: center;
+                margin-top: 10px;
             }
         }
 
@@ -374,8 +389,8 @@
                 </div>
 
                 <p class="message" id="messageText">
-                    Dear love, I know I hurt you and I’m truly sorry. You mean the world to me. This page is made to
-                    remind you how much I cherish every moment with you and to promise I’ll be better. ❤️
+                    Dear love, I know I hurt you and I'm truly sorry. You mean the world to me. This page is made to
+                    remind you how much I cherish every moment with you and to promise I'll be better. ❤️
                 </p>
 
                 <div class="controls">
@@ -390,7 +405,7 @@
 
                 <div class="reveal hidden" id="revealArea">
                     <div class="big-love">I Love You Forever 💖</div>
-                    <p>You’re my home, my smile, my calm. I'm sorry for the pain — I promise to make it right.</p>
+                    <p>You're my home, my smile, my calm. I'm sorry for the pain — I promise to make it right.</p>
                 </div>
 
                 <footer>
@@ -456,7 +471,7 @@
         new Swiper('.mySwiper', {
             loop: true,
             pagination: { el: '.swiper-pagination', clickable: true },
-            navigation: { nextEl: '.swiper-button-prev', prevEl: '.swiper-button-next' },
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             autoplay: { delay: 4000, disableOnInteraction: false },
             speed: 800,
             slidesPerView: 1,
@@ -529,4 +544,3 @@
 </body>
 
 </html>
-
